@@ -3,7 +3,6 @@ import 'package:clean_app/widgets/advertise_item.dart';
 import 'package:clean_app/widgets/appbar_with_ToggleButtons.dart';
 import 'package:clean_app/widgets/custom_toggle_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 class AdvertisementScreen extends StatelessWidget {
   AdvertisementScreen({Key? key}) : super(key: key);

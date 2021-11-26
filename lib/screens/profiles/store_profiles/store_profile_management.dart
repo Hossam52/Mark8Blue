@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:timelines/timelines.dart';
 
 class StoreManagement extends StatelessWidget {
   final int initialIndex;

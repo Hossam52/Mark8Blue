@@ -12,7 +12,6 @@ import 'package:clean_app/widgets/custom_toggle_buttons.dart';
 import 'package:clean_app/widgets/store_owner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:timelines/timelines.dart';
 
 class AddOrders extends StatefulWidget {
   AddOrders({Key? key}) : super(key: key);
