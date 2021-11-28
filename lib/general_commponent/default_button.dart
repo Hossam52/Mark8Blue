@@ -77,7 +77,7 @@ class _DefaultButtonState extends State<DefaultButton> {
                   (states) => states.contains(MaterialState.disabled)
                       ? widget.disabledColor ?? Theme.of(context).disabledColor
                       : widget.isBorder
-                          ? null
+                          ? Theme.of(context).cardColor
                           : widget.background),
             ),
 

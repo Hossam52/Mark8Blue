@@ -145,14 +145,16 @@ Widget buildRow(
       ],
     );
 
-Widget ratingRow(String title, String val1, String val2) => Column(
+Widget ratingRow({String? title, required String bad, required String good}) =>
+    Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(child: Text(title, style: getRegularStyle())),
+              if (title != null)
+                Expanded(child: Text(title, style: getRegularStyle())),
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -168,7 +170,7 @@ Widget ratingRow(String title, String val1, String val2) => Column(
                     children: [
                       Expanded(
                         child: Text(
-                          val1,
+                          bad,
                           style: getBoldStyle(
                             fontSize: 14,
                             color: Colors.red,
@@ -178,7 +180,7 @@ Widget ratingRow(String title, String val1, String val2) => Column(
                       VerticalDivider(),
                       Expanded(
                         child: Text(
-                          val2,
+                          good,
                           style: getBoldStyle(
                             fontSize: 14,
                             color: Colors.green,

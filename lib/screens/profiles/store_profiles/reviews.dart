@@ -40,7 +40,7 @@ class ReviewsWidget extends StatelessWidget {
           ),
           SizedBox(
               width: (width * 0.45).w,
-              child: FittedBox(child: ratingRow('', 'Bad 30%', 'Good 70%'))),
+              child: ratingRow(bad: 'Bad 30%', good: 'Good 70%')),
           SizedBox(
             height: height * 0.25,
             child: ListView(

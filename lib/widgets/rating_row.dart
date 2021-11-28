@@ -23,6 +23,13 @@ class RatingRow extends StatefulWidget {
 }
 
 class RatingRowState extends State<RatingRow> {
+  late double _rating;
+  @override
+  void initState() {
+    _rating = widget.rating;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (widget._isViewOnly)
@@ -41,17 +48,21 @@ class RatingRowState extends State<RatingRow> {
       updateOnDrag: true,
       unratedColor: Theme.of(context).primaryColor,
       itemBuilder: _buildStars,
-      onRatingUpdate: widget.onPressed!,
+      onRatingUpdate: (x) {
+        _rating = x;
+        setState(() {});
+        widget.onPressed!(x);
+      },
     );
   }
 
   Widget _buildStars(context, index) {
-    if (index >= widget.rating) {
+    if (index >= _rating) {
       return Icon(
         Icons.star_border,
       );
     }
-    if (widget.rating.toInt() < widget.rating && widget.rating.toInt() == index)
+    if (_rating.toInt() < _rating && _rating.toInt() == index)
       return Icon(
         Icons.star_half,
         color: widget.color,

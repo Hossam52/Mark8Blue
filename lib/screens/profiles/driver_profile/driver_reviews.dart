@@ -42,16 +42,18 @@ class DriverReviews extends StatelessWidget {
               style:
                   getRegularStyle(fontSize: 18, color: ColorManager.lightGrey)),
           SizedBox(height: 20),
-          ratingRow('${_speedBehavior.title}', '${_speedBehavior.fast}% fast',
-              '${_speedBehavior.slow}% slow'),
           ratingRow(
-              '${_communicationBehavior.title}',
-              '${_communicationBehavior.fast}% good',
-              '${_communicationBehavior.slow}% Bad'),
+              title: '${_speedBehavior.title}',
+              good: '${_speedBehavior.fast}% fast',
+              bad: '${_speedBehavior.slow}% slow'),
           ratingRow(
-              '${_commitmentBehavior.title}',
-              '${_commitmentBehavior.fast}% No commitment',
-              '${_commitmentBehavior.slow}% commitment'),
+              title: '${_communicationBehavior.title}',
+              good: '${_communicationBehavior.fast}% good',
+              bad: '${_communicationBehavior.slow}% Bad'),
+          ratingRow(
+              title: '${_commitmentBehavior.title}',
+              good: '${_commitmentBehavior.fast}% No commitment',
+              bad: '${_commitmentBehavior.slow}% commitment'),
           _statistics()
         ],
       ),
