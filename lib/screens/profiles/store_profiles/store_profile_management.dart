@@ -4,6 +4,7 @@ import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/profiles/store_profiles/store_profile.dart';
 import 'package:clean_app/screens/profiles/store_profiles/store_reviews.dart';
 import 'package:clean_app/widgets/cover_and_profile_image.dart';
+import 'package:clean_app/widgets/indicator_widget.dart';
 import 'package:clean_app/widgets/rating_row.dart';
 import 'package:clean_app/widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,18 +17,20 @@ class StoreManagement extends StatelessWidget {
   StoreManagement({Key? key, this.initialIndex = 0}) : super(key: key) {
     storeInformations = [
       StoreProfileScreen(
+          profileData: ProfileDataConfigs(
         coverImagePath: 'asset/images/coverProfile.png',
-        detailsTable: storeInfoTable,
+        detailsTable: storeInfo,
         imagePath: 'asset/images/userProfile.png',
         title: 'Store Details',
-      ),
+      )),
       StoreProfileScreen(
+          profileData: ProfileDataConfigs(
         coverImagePath: 'asset/images/coverProfile.png',
-        detailsTable: buyerInfoTable,
+        detailsTable: buyerInfo,
         imagePath: 'asset/images/userProfile.png',
         title: 'Buyer Details',
         showDiscription: false,
-      ),
+      )),
       // BuyerProfile(),
       StoreReviews(),
     ];
@@ -55,8 +58,6 @@ class StoreManagement extends StatelessWidget {
     TableRowItem(title: 'Rating', widget: RatingRow(size: 25)),
     TableRowItem(title: 'Store address', widget: Text('Address')),
   ];
-  late final TableDataWidget storeInfoTable = TableDataWidget(rows: storeInfo);
-
   final buyerInfo = [
     TableRowItem(title: 'Employment number', widget: Text('225547')),
     TableRowItem(title: 'Name', widget: Text('محمد علي')),
@@ -95,8 +96,6 @@ class StoreManagement extends StatelessWidget {
     );
   }
 
-  late final TableDataWidget buyerInfoTable = TableDataWidget(rows: buyerInfo);
-
   late final List<Widget> storeInformations;
   late final _pagesController = PageController(initialPage: initialIndex);
   @override
@@ -110,8 +109,8 @@ class StoreManagement extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SmoothPageIndicator(
-              controller: _pagesController,
+            child: IndicatorWidget(
+              pageController: _pagesController,
               count: 3,
             ),
           ),

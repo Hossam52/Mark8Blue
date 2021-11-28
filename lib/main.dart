@@ -1,4 +1,5 @@
 import 'package:clean_app/general_commponent/colors.dart';
+import 'package:clean_app/presentation/resourses/theme_manager.dart';
 import 'package:clean_app/screens/advertisement/advertisement_screen.dart';
 import 'package:clean_app/screens/conditions/conditions_screen.dart';
 import 'package:clean_app/screens/home/home_screen.dart';
@@ -45,14 +46,14 @@ class _MyAppState extends State<MyApp> {
           supportedLocales: context.supportedLocales,
           locale: Locale('en'),
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            fontFamily: 'jalia',
-            primaryColor: defaultColor,
-            scaffoldBackgroundColor: Colors.white,
-            // textTheme: TextTheme(bodyText2: TextStyle(fontSize: 20)),
-            colorScheme:
-                ColorScheme.fromSwatch().copyWith(primary: defaultColor),
-          ),
+          theme: getApplicationTheme(),
+
+          // ThemeData(
+          //   fontFamily: 'jalia',
+          //   primaryColor: Colors.green,
+          //   scaffoldBackgroundColor: Colors.white,
+          //   // textTheme: TextTheme(bodyText2: TextStyle(fontSize: 20)),
+          // ),
           home: SplashScreen()),
     );
   }

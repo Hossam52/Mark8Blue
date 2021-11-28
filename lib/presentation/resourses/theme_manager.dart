@@ -12,6 +12,7 @@ ThemeData getApplicationTheme() {
     primaryColorDark: ColorManager.darkPrimary,
     disabledColor: ColorManager.grey1,
     colorScheme: ColorScheme.fromSwatch(accentColor: ColorManager.grey),
+
     splashColor: ColorManager.primaryOpacity70,
     //Card Theme
     cardTheme: CardTheme(
@@ -32,16 +33,18 @@ ThemeData getApplicationTheme() {
     buttonTheme: ButtonThemeData(
         shape: StadiumBorder(),
         disabledColor: ColorManager.grey1,
-        buttonColor: ColorManager.primary,
+        buttonColor: ColorManager.buttonColor,
         splashColor: ColorManager.primaryOpacity70),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-          textStyle: getRegularStyle(
-            color: ColorManager.white,
-          ),
-          primary: ColorManager.primary,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSize.s12))),
+        textStyle: getRegularStyle(
+          color: ColorManager.white,
+        ),
+        primary: ColorManager.buttonColor,
+
+        // shape: RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.circular(AppSize.s12)),
+      ),
     ),
     // TextTheme
     textTheme: TextTheme(

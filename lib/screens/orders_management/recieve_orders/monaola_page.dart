@@ -86,8 +86,7 @@ class MonaloaPage extends StatelessWidget {
                   TextSpan(
                       text: '/ 2',
                       style: getRegularStyle(
-                          fontSize: 18,
-                          color: Theme.of(context).colorScheme.primary))
+                          fontSize: 18, color: Theme.of(context).primaryColor))
                 ],
               ),
             ),
@@ -149,7 +148,7 @@ class MonaloaPage extends StatelessWidget {
                 child: Text('Meeting time 12:30 AM 15/9/2021',
                     style: getLightStyle(
                       fontSize: 16,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Theme.of(context).primaryColor,
                     )),
               )
             ],

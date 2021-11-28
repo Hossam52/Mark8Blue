@@ -19,13 +19,13 @@ class SuccessOrder extends StatelessWidget {
         SizedBox(height: 10),
         Text('Congratulations!!',
             style: getLightStyle(
-                color: Theme.of(context).colorScheme.primary, fontSize: 18)),
+                color: Theme.of(context).primaryColor, fontSize: 18)),
         SizedBox(height: 10),
         Text('Order had delivered', style: getRegularStyle(fontSize: 18)),
         SizedBox(height: 10),
         Text('Sending time 12:30 AM 15/9/2021',
             style: getRegularStyle(
-                color: Theme.of(context).colorScheme.primary, fontSize: 15)),
+                color: Theme.of(context).primaryColor, fontSize: 15)),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30),
           child: DefaultButton(

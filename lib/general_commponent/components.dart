@@ -43,15 +43,11 @@ TextStyle defaultTextStyleHint() => TextStyle(
       fontWeight: FontWeight.w600,
     );
 
-Widget buildIcon(String path, {double? size}) {
+Widget buildIcon(String path, {double? size, Color? color}) {
   final double iconSize = size ?? 16.w;
 
   return Builder(builder: (context) {
-    return Image.asset(
-      path,
-      width: iconSize,
-      height: iconSize,
-    );
+    return Image.asset(path, width: iconSize, height: iconSize, color: color);
   });
 }
 
@@ -205,7 +201,7 @@ Widget ratingRow(String title, String val1, String val2) => Column(
 Widget headerText(String text,
     {double fontSize = 18, Color? textColor, FontWeight? fontWeight}) {
   return Builder(builder: (context) {
-    if (textColor == null) textColor = Theme.of(context).colorScheme.primary;
+    if (textColor == null) textColor = Theme.of(context).primaryColor;
     return Text(
       text,
       style: TextStyle(

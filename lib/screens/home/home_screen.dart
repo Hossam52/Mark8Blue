@@ -5,7 +5,6 @@ import 'package:clean_app/screens/orders_management/orders_management.dart';
 import 'package:clean_app/screens/profiles/personal/profile_screen.dart';
 import 'package:clean_app/screens/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -55,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
           showUnselectedLabels: true,
           selectedIconTheme:
-              IconThemeData(color: Theme.of(context).colorScheme.primary),
+              IconThemeData(color: Theme.of(context).primaryColor),
           items: [
             for (int i = 0; i < pages.length; i++)
               BottomNavigationBarItem(

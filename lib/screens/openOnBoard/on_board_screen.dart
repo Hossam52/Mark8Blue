@@ -1,6 +1,7 @@
 import 'package:clean_app/general_commponent/components.dart';
 import 'package:clean_app/general_commponent/default_button.dart';
 import 'package:clean_app/screens/login/login_screen.dart';
+import 'package:clean_app/widgets/indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -59,18 +60,19 @@ class _OnboardingState extends State<Onboarding> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginScreen()));
+                                builder: (context) => LoginScreen(
+                                      logoPath: 'asset/images/login_logo.png',
+                                    )));
                       }
                       //fetchApiLogin
                       ),
                 ),
                 Expanded(
                   child: Center(
-                    child: SmoothPageIndicator(
-                      controller: _pageController,
-                      count: _onBoardPages.length,
-                    ),
-                  ),
+                      child: IndicatorWidget(
+                    pageController: _pageController,
+                    count: _onBoardPages.length,
+                  )),
                 ),
               ],
             ),
@@ -118,7 +120,11 @@ class _OnboardingState extends State<Onboarding> {
     print(currentPage);
     if (currentPage == 2) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => LoginScreen()));
+          context,
+          MaterialPageRoute(
+              builder: (context) => LoginScreen(
+                    logoPath: 'asset/images/login_logo.png',
+                  )));
     } else {
       _pageController.animateToPage(currentPage + 1,
           duration: Duration(milliseconds: 200), curve: Curves.linear);

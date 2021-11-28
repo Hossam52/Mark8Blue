@@ -65,7 +65,11 @@ class _SignupScreenState extends State<SignupScreen> {
           Text("Already registered?"),
           TextButton(
             onPressed: () {
-              To(context, LoginScreen());
+              To(
+                  context,
+                  LoginScreen(
+                    logoPath: 'asset/images/login_logo.png',
+                  ));
             },
             child: Text(
               "Log in",

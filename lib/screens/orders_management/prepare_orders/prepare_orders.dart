@@ -1,6 +1,11 @@
 import 'package:clean_app/general_commponent/colors.dart';
 import 'package:clean_app/general_commponent/components.dart';
 import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:clean_app/models/company_model.dart';
+import 'package:clean_app/models/driver_model.dart';
+import 'package:clean_app/models/morag3at_model.dart';
+import 'package:clean_app/models/review_model.dart';
+import 'package:clean_app/models/vehicle_model.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/profiles/driver_profile/driver_profile_management.dart';
@@ -129,8 +134,8 @@ class _PrepareOrdersState extends State<PrepareOrders> {
   }
 
   Widget _buildOrderTime(context) {
-    final sendingStyle = getRegularStyle(
-        color: Theme.of(context).colorScheme.primary, fontSize: 14);
+    final sendingStyle =
+        getRegularStyle(color: Theme.of(context).primaryColor, fontSize: 14);
     final recieivingStyle = getRegularStyle(color: Colors.green, fontSize: 14);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -246,6 +251,17 @@ class _PrepareOrdersState extends State<PrepareOrders> {
   }
 
   Widget _buildAvailableDrivers() {
+    final DriverScreenConfigs driverConfigs = DriverScreenConfigs(driverProfile,
+        bottomButton: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: DefaultButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            text: 'Select',
+          ),
+        ));
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -261,7 +277,7 @@ class _PrepareOrdersState extends State<PrepareOrders> {
               itemCount: drivers.length,
               itemBuilder: (_, index) => InkWell(
                   onTap: () {
-                    To(context, DriverProfileManagement());
+                    To(context, DriverProfileManagement(driverConfigs));
                     setState(() {
                       driverIndex = index;
                       for (var i in List.generate(drivers.length, (ij) => ij))
@@ -290,8 +306,7 @@ class _PrepareOrdersState extends State<PrepareOrders> {
               RichText(
                 text: TextSpan(
                   text: '${driver.points.toString()} ',
-                  style: getRegularStyle(
-                      color: Theme.of(context).colorScheme.primary),
+                  style: getRegularStyle(color: Theme.of(context).primaryColor),
                   children: [
                     TextSpan(text: 'Points', style: getRegularStyle())
                   ],

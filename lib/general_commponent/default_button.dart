@@ -1,3 +1,4 @@
+import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'colors.dart';
 
 class DefaultButton extends StatefulWidget {
-  final Color background;
+  final Color? background;
   final Color textColor;
   final double? fontSize;
   final double? radius;
@@ -21,11 +22,12 @@ class DefaultButton extends StatefulWidget {
   final bool isFittedText;
   final bool iconEnd;
   final double horizontalMargin;
+  final Color? disabledColor;
 
   DefaultButton(
       {required this.onPressed,
       required this.text,
-      this.background = defaultColor,
+      this.background,
       this.textColor = Colors.white,
       this.fontSize,
       this.radius,
@@ -37,7 +39,8 @@ class DefaultButton extends StatefulWidget {
       this.isShadow = true,
       this.toUpper = false,
       this.iconEnd = false,
-      this.horizontalMargin = 21});
+      this.horizontalMargin = 21,
+      this.disabledColor});
 
   @override
   _DefaultButtonState createState() => _DefaultButtonState();
@@ -55,7 +58,10 @@ class _DefaultButtonState extends State<DefaultButton> {
           borderRadius: BorderRadius.circular(
             widget.radius ?? 5,
           ),
-          border: widget.isBorder ? Border.all(color: widget.background) : null,
+          border: widget.isBorder
+              ? Border.all(
+                  color: widget.background ?? Theme.of(context).primaryColor)
+              : null,
           boxShadow: widget.isShadow && !widget.isBorder
               ? [
                   BoxShadow(
@@ -64,18 +70,33 @@ class _DefaultButtonState extends State<DefaultButton> {
                       blurRadius: 2),
                 ]
               : null),
-      child: TextButton(
+      child: ElevatedButton(
         onPressed: widget.onPressed,
-        style: ButtonStyle(
-          elevation: MaterialStateProperty.all<double>(0),
-          foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
-          padding: MaterialStateProperty.all(EdgeInsets.all(0)),
-          overlayColor: MaterialStateProperty.resolveWith<Color>(
-            (Set<MaterialState> states) {
-              return Colors.white.withOpacity(0.20);
-            },
-          ),
-        ),
+        style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+              backgroundColor: MaterialStateProperty.resolveWith(
+                  (states) => states.contains(MaterialState.disabled)
+                      ? widget.disabledColor ?? Theme.of(context).disabledColor
+                      : widget.isBorder
+                          ? null
+                          : widget.background),
+            ),
+
+        //  ButtonStyle(
+        //   backgroundColor: MaterialStateProperty.resolveWith(
+        //       (states) => states.contains(MaterialState.disabled)
+        //           ? widget.disabledColor ?? Theme.of(context).disabledColor
+        //           : widget.isBorder
+        //               ? null
+        //               : widget.background ?? Theme.of(context).primaryColor),
+        //   // foregroundColor:
+        //   //     MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
+        //   padding: MaterialStateProperty.all(EdgeInsets.all(0)),
+        //   overlayColor: MaterialStateProperty.resolveWith<Color>(
+        //     (Set<MaterialState> states) {
+        //       return Colors.white.withOpacity(0.20);
+        //     },
+        //   ),
+        // ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Directionality(
@@ -86,11 +107,7 @@ class _DefaultButtonState extends State<DefaultButton> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   widget.icon ?? Container(),
-                  widget.icon != null
-                      ? SizedBox(
-                          width: 5,
-                        )
-                      : Container(),
+                  Spacer(),
                   widget.isFittedText
                       ? FittedBox(
                           fit: BoxFit.fill,
@@ -102,7 +119,8 @@ class _DefaultButtonState extends State<DefaultButton> {
                             style: getRegularStyle(
                               fontSize: widget.fontSize ?? 15,
                               color: widget.isBorder
-                                  ? widget.background
+                                  ? widget.background ??
+                                      Theme.of(context).primaryColor
                                   : widget.textColor,
                             ),
                           ),
@@ -115,10 +133,12 @@ class _DefaultButtonState extends State<DefaultButton> {
                           style: getRegularStyle(
                             fontSize: widget.fontSize ?? 15,
                             color: widget.isBorder
-                                ? widget.background
+                                ? widget.background ??
+                                    Theme.of(context).primaryColor
                                 : widget.textColor,
                           ),
                         ),
+                  Spacer()
                 ],
               ),
             ),

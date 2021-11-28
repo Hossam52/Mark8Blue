@@ -5,6 +5,7 @@ import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/maps/address_location.dart';
 import 'package:clean_app/screens/notifications/notification_screen.dart';
 import 'package:clean_app/widgets/cover_and_profile_image.dart';
+import 'package:clean_app/widgets/notification_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,63 +37,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return CoverProfileImage(
         totalHeight: 230.h,
         radius: 70.r,
-        startWidget: InkWell(
-          onTap: () {
-            To(context, NotificationScreen());
-          },
-          child: _notificationIcon(),
+        startWidget: NotificationBadge(
+          onPressed: () => To(context, NotificationScreen()),
         ),
         changeProfilePictures: true,
         coverImagePath: 'asset/images/coverProfile.png',
         profileImagePath: 'asset/images/userProfile.png');
   }
-
-  Widget _notificationIcon() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50.w),
-      child: Badge(
-        alignment: Alignment.topRight,
-        badgeColor: Colors.red,
-        badgeContent: Text(
-          '1',
-          style: getRegularStyle(color: Colors.white),
-        ),
-        position: BadgePosition(
-          end: 5.w,
-          top: -20.h,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12.0,
-          ),
-          child: buildIcon('asset/images/notification.png', size: 30.r),
-        ),
-      ),
-    );
-  }
-
-  // CoverProfileImage _coverProfileImage(BuildContext context) {
-  //   return CoverProfileImage(
-  //     coverImagePath: 'asset/images/coverProfile.png',
-  //     profileImagePath: 'asset/images/userProfile.png',
-  //     radius: 60.r,
-  //     startWidget: InkWell(
-  //       onTap: () {
-  //         To(context, NotificationScreen());
-  //       },
-  //       child: Padding(
-  //         padding: const EdgeInsets.symmetric(
-  //           horizontal: 12.0,
-  //         ),
-  //         child: Image.asset(
-  //           'asset/images/notification.png',
-  //           scale: 2.3,
-  //         ),
-  //       ),
-  //     ),
-  //     totalHeight: 230.h,
-  //   );
-  // }
 
   Widget _buildProfileData() {
     return Padding(

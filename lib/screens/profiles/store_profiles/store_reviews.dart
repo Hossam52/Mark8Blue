@@ -1,4 +1,5 @@
 import 'package:clean_app/general_commponent/components.dart';
+import 'package:clean_app/models/morag3at_model.dart';
 import 'package:clean_app/widgets/morag3at.dart';
 import 'package:clean_app/screens/profiles/store_profiles/reviews.dart';
 import 'package:clean_app/widgets/card_widget.dart';
@@ -24,7 +25,9 @@ class _StoreReviewsState extends State<StoreReviews> {
       ToggleItemDataWithWidget(
           title: 'Morag3at',
           onPressed: () => onChangeSelected(1),
-          page: Morag3atWidget()),
+          page: Morag3atWidget(
+            morg3at: allMorg3at,
+          )),
     ];
     super.initState();
   }

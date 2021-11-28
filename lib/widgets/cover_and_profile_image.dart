@@ -107,6 +107,8 @@ class CoverProfileImage extends StatelessWidget {
                 ],
               ),
               style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).primaryColor),
                 shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5),

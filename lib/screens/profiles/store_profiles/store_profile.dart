@@ -1,27 +1,21 @@
+import 'package:badges/badges.dart';
 import 'package:clean_app/general_commponent/components.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
+import 'package:clean_app/screens/notifications/notification_screen.dart';
 import 'package:clean_app/widgets/border_container_light.dart';
 import 'package:clean_app/widgets/cover_and_profile_image.dart';
+import 'package:clean_app/widgets/notification_badge.dart';
 import 'package:clean_app/widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StoreProfileScreen extends StatelessWidget {
-  const StoreProfileScreen(
-      {Key? key,
-      required this.title,
-      required this.detailsTable,
-      required this.coverImagePath,
-      required this.imagePath,
-      this.showDiscription = true})
+  const StoreProfileScreen({Key? key, required this.profileData})
       : super(key: key);
 
-  final String title;
-  final TableDataWidget detailsTable;
-  final String coverImagePath;
-  final String imagePath;
-  final bool showDiscription;
+  final ProfileDataConfigs profileData;
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +23,27 @@ class StoreProfileScreen extends StatelessWidget {
       child: Column(
         children: [
           CoverProfileImage(
-            endWidget: BackButton(
-              color: Theme.of(context).primaryColor,
-            ),
-            coverImagePath: coverImagePath,
-            profileImagePath: imagePath,
-            totalHeight: 200,
+            endWidget: profileData.showBackButton
+                ? BackButton(
+                    color: Theme.of(context).primaryColor,
+                  )
+                : Container(),
+            startWidget: profileData.showNotificationButton
+                ? NotificationBadge(
+                    onPressed: () => To(context, NotificationScreen()),
+                  )
+                : Container(),
+            coverImagePath: profileData.coverImagePath,
+            profileImagePath: profileData.imagePath,
+            totalHeight: 200.h,
+            radius: 60.r,
           ),
           SizedBox(height: 20),
-          Text(title,
+          Text(profileData.title ?? '',
               style:
                   getRegularStyle(color: ColorManager.lightGrey, fontSize: 18)),
-          detailsTable,
-          if (showDiscription) _storeDescription()
+          TableDataWidget(rows: profileData.detailsTable),
+          if (profileData.showDiscription) _storeDescription()
         ],
       ),
     );
@@ -71,4 +73,23 @@ class StoreProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class ProfileDataConfigs {
+  final String? title;
+  final List<TableRowItem> detailsTable;
+  final String coverImagePath;
+  final String imagePath;
+  final bool showDiscription;
+  final bool showNotificationButton;
+  final bool showBackButton;
+
+  ProfileDataConfigs(
+      {this.title,
+      required this.detailsTable,
+      required this.coverImagePath,
+      required this.imagePath,
+      this.showDiscription = true,
+      this.showBackButton = true,
+      this.showNotificationButton = false});
 }

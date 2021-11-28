@@ -96,7 +96,7 @@ class OrderPricing extends StatelessWidget {
               Text(
                 'Cash',
                 style: getRegularStyle(
-                    fontSize: 18, color: Theme.of(context).colorScheme.primary),
+                    fontSize: 18, color: Theme.of(context).primaryColor),
               ),
             ],
           ),

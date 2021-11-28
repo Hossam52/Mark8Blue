@@ -1,4 +1,6 @@
 import 'package:clean_app/general_commponent/components.dart';
+import 'package:clean_app/models/driver_model.dart';
+import 'package:clean_app/models/review_model.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/widgets/rating_bars.dart';
@@ -7,8 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DriverReviews extends StatelessWidget {
-  const DriverReviews({Key? key}) : super(key: key);
-
+  DriverReviews({Key? key, required this.driverReviewModel})
+      : _speedBehavior = driverReviewModel.speed,
+        _commitmentBehavior = driverReviewModel.commitment,
+        _communicationBehavior = driverReviewModel.communication,
+        super(key: key);
+  final DriverReviewModel driverReviewModel;
+  final SpeedBehavior _speedBehavior;
+  final CommunicationBehavior _communicationBehavior;
+  final CommitmentBehavior _commitmentBehavior;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -33,9 +42,16 @@ class DriverReviews extends StatelessWidget {
               style:
                   getRegularStyle(fontSize: 18, color: ColorManager.lightGrey)),
           SizedBox(height: 20),
-          ratingRow('Speed', '70% fast', '30% slow'),
-          ratingRow('Communication', '30% good', '70% Bad'),
-          ratingRow('Commitment', '30% No commitment', '70% commitment'),
+          ratingRow('${_speedBehavior.title}', '${_speedBehavior.fast}% fast',
+              '${_speedBehavior.slow}% slow'),
+          ratingRow(
+              '${_communicationBehavior.title}',
+              '${_communicationBehavior.fast}% good',
+              '${_communicationBehavior.slow}% Bad'),
+          ratingRow(
+              '${_commitmentBehavior.title}',
+              '${_commitmentBehavior.fast}% No commitment',
+              '${_commitmentBehavior.slow}% commitment'),
           _statistics()
         ],
       ),
@@ -48,13 +64,20 @@ class DriverReviews extends StatelessWidget {
       children: [
         RatingRow(),
         SizedBox(width: 10),
-        Text('(49) review'),
+        Text('(${driverReviewModel.reviews} hello) review'),
       ],
     );
   }
 
   Widget _ratingBars() {
-    return CustomRatingBars(2, 7, 15, 40, 80);
+    print(driverReviewModel.ratingValues);
+    return CustomRatingBars(
+      driverReviewModel.ratingValues[0],
+      driverReviewModel.ratingValues[1],
+      driverReviewModel.ratingValues[2],
+      driverReviewModel.ratingValues[3],
+      driverReviewModel.ratingValues[4],
+    );
   }
 
   Widget _statistics() {
@@ -69,12 +92,12 @@ class DriverReviews extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            'Better driver 20',
+            'Better driver ${driverReviewModel.betterDriver}',
             style: getRegularStyle(),
           ),
           VerticalDivider(thickness: 1),
           Text(
-            'Points 3500',
+            'Points ${driverReviewModel.points}',
             style: getRegularStyle(),
           ),
         ],

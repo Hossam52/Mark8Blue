@@ -30,7 +30,7 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
             color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: ToggleButtons(
           borderRadius: BorderRadius.circular(10),
-          fillColor: Theme.of(context).colorScheme.primary,
+          fillColor: Theme.of(context).primaryColor,
           color: Colors.black,
           constraints: BoxConstraints(
               // maxHeight: 60,

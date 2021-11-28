@@ -1,4 +1,6 @@
 import 'package:clean_app/general_commponent/components.dart';
+import 'package:clean_app/models/morag3at_model.dart';
+import 'package:clean_app/models/review_model.dart';
 import 'package:clean_app/screens/profiles/driver_profile/driver_reviews.dart';
 import 'package:clean_app/widgets/morag3at.dart';
 import 'package:clean_app/screens/profiles/store_profiles/reviews.dart';
@@ -8,8 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DriverReviewsManagement extends StatefulWidget {
-  DriverReviewsManagement({Key? key}) : super(key: key);
-
+  const DriverReviewsManagement(
+      {Key? key, required this.driverReviewModel, required this.morag3atModel})
+      : super(key: key);
+  final DriverReviewModel driverReviewModel;
+  final List<Morag3atModel> morag3atModel;
   @override
   State<DriverReviewsManagement> createState() =>
       _DriverReviewsManagementState();
@@ -22,11 +27,13 @@ class _DriverReviewsManagementState extends State<DriverReviewsManagement> {
       ToggleItemDataWithWidget(
           title: 'Reviews',
           onPressed: () => onChangeSelected(0),
-          page: DriverReviews()),
+          page: DriverReviews(
+            driverReviewModel: widget.driverReviewModel,
+          )),
       ToggleItemDataWithWidget(
           title: 'Morag3at',
           onPressed: () => onChangeSelected(1),
-          page: Morag3atWidget()),
+          page: Morag3atWidget(morg3at: widget.morag3atModel)),
     ];
     super.initState();
   }

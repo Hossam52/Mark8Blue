@@ -14,7 +14,7 @@ class ChoosenStoresWidget extends StatelessWidget {
   final double? itemWidth;
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
+    final color = Theme.of(context).primaryColor;
     final screenHeight = MediaQuery.of(context).size.height;
     return SizedBox(
       height: height ?? screenHeight * 0.22,

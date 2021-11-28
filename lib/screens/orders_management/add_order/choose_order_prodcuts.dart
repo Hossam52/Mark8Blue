@@ -28,7 +28,7 @@ class ChooseOrderProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
-    final primaryColor = Theme.of(context).colorScheme.primary;
+    final primaryColor = Theme.of(context).primaryColor;
 
     return Column(
       children: [

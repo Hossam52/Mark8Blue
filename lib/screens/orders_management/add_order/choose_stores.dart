@@ -118,7 +118,7 @@ class ChooseOrderStores extends StatelessWidget {
                 daysCount: 7,
                 // height: MediaQuery.of(context).size.height * 0.17.h,
                 initialSelectedDate: DateTime.now().add(Duration(days: 2)),
-                selectionColor: Theme.of(context).colorScheme.primary,
+                selectionColor: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -186,8 +186,7 @@ class _TimeSelectionState extends State<TimeSelection> {
               child: Text(
                 '$hours : $minutes ${isAM ? 'AM' : 'PM'}',
                 style: TextStyle(
-                    fontSize: 20.sp,
-                    color: Theme.of(context).colorScheme.primary),
+                    fontSize: 20.sp, color: Theme.of(context).primaryColor),
               ),
             ),
             Expanded(

@@ -85,11 +85,11 @@ class AdvertiseItem extends StatelessWidget {
       Text('12:30 AM',
           style: getBoldStyle(
             fontSize: 14,
-            color: Theme.of(context).colorScheme.primary,
+            color: Theme.of(context).primaryColor,
           )),
       Text('15-9-2021',
           style: getRegularStyle(
-              fontSize: 14, color: Theme.of(context).colorScheme.primary)),
+              fontSize: 14, color: Theme.of(context).primaryColor)),
     ]);
   }
 

@@ -23,7 +23,7 @@ class SignatureWidget extends StatelessWidget {
             Flexible(
                 child: DefaultButton(
               onPressed: null,
-              background: ColorManager.primaryOpacity70,
+              // background: ColorManager.primaryOpacity70,
               text: 'Password',
               horizontalMargin: 0,
             )),
@@ -32,6 +32,7 @@ class SignatureWidget extends StatelessWidget {
                 child: DefaultButton(
               onPressed: onConfirmPressed,
               text: 'Confirm',
+              background: Theme.of(context).primaryColor,
               horizontalMargin: 0,
             )),
             Expanded(flex: 1, child: Container()),

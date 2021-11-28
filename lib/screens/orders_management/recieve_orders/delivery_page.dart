@@ -53,7 +53,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
           Divider(),
           StoreOwnerWidget(),
           SizedBox(height: 10),
-          _confirmArrival(),
+          ConfimrArrival(),
           Divider(),
           _pricintDetails(height),
           princingSteppers[selectedPricingStepper].page,
@@ -75,8 +75,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
                 TextSpan(
                     text: '/ 2',
                     style: getRegularStyle(
-                        fontSize: 18,
-                        color: Theme.of(context).colorScheme.primary))
+                        fontSize: 18, color: Theme.of(context).primaryColor))
               ])),
           Expanded(
             child: Card(
@@ -90,32 +89,6 @@ class _DeliveryPageState extends State<DeliveryPage> {
                         )),
               ),
             ),
-          )
-        ],
-      );
-    });
-  }
-
-  Widget _confirmArrival() {
-    return Builder(builder: (context) {
-      return Row(
-        children: [
-          Expanded(
-            flex: 6,
-            child: DefaultButton(
-              onPressed: () {},
-              text: 'Confirm Arrival',
-              horizontalMargin: 0,
-            ),
-          ),
-          Expanded(child: Container()),
-          Flexible(
-            flex: 9,
-            child: Text('Meeting time 12:30 AM 15/9/2021',
-                style: getLightStyle(
-                  fontSize: 15,
-                  color: Theme.of(context).colorScheme.primary,
-                )),
           )
         ],
       );
@@ -193,6 +166,36 @@ class _RemainForRecievingItem extends StatelessWidget {
   }
 }
 
+class ConfimrArrival extends StatelessWidget {
+  const ConfimrArrival({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 6,
+          child: DefaultButton(
+            background: Theme.of(context).primaryColor,
+            onPressed: () {},
+            text: 'Confirm Arrival',
+            horizontalMargin: 0,
+          ),
+        ),
+        Expanded(child: Container()),
+        Flexible(
+          flex: 9,
+          child: Text('Meeting time 12:30 AM 15/9/2021',
+              style: getLightStyle(
+                fontSize: 15,
+                color: Theme.of(context).primaryColor,
+              )),
+        )
+      ],
+    );
+  }
+}
+
 //////////////////Concrete class for template/////////////////
 class RecievingTableWidget extends StatelessWidget {
   const RecievingTableWidget(
@@ -225,6 +228,7 @@ class RecievingTableWidget extends StatelessWidget {
           Expanded(
             flex: 6,
             child: DefaultButton(
+              background: Theme.of(context).primaryColor,
               onPressed: onPayInvoicePressed,
               text: 'Pay invoice',
               horizontalMargin: 0,
@@ -236,7 +240,7 @@ class RecievingTableWidget extends StatelessWidget {
             child: Text('12:30 AM 15/9/2021',
                 style: getLightStyle(
                   fontSize: 15,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).primaryColor,
                 )),
           )
         ],
@@ -276,6 +280,32 @@ class _PurchaseStepperItem extends StatelessWidget {
   }
 }
 
+///////////////// Delivery stepper/////////
+class _DeliveryStepperItem extends StatelessWidget {
+  _DeliveryStepperItem({Key? key, required this.onConfirmPressed})
+      : super(key: key);
+  final VoidCallback onConfirmPressed;
+  final List<TableRowItem> _deliveryTableRows = [
+    TableRowItem(title: 'Total stores', widget: Text('3')),
+    TableRowItem(title: 'Total weight', widget: Text('12 KG')),
+    TableRowItem(title: 'Delivery commision', widget: Text('1 PSD')),
+    TableRowItem(title: 'Total delivery cost', widget: Text('3 JD')),
+    TableRowItem(title: 'Total price', widget: Text('2 JD')),
+    TableRowItem(
+        title: 'Payment method',
+        widget: buildIcon('asset/images/cash.png', size: 30.r)),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return RecievingTableWidget(
+      onPayInvoicePressed: () {},
+      tableData: _deliveryTableRows,
+      onConfirmPressed: onConfirmPressed,
+    );
+  }
+}
+
+//Revirew Dialog
 class _ReviewDialog extends StatelessWidget {
   const _ReviewDialog({Key? key}) : super(key: key);
 
@@ -294,7 +324,7 @@ class _ReviewDialog extends StatelessWidget {
           SizedBox(height: 10),
           Text('Congratulations!!',
               style: getLightStyle(
-                  color: Theme.of(context).colorScheme.primary, fontSize: 18)),
+                  color: Theme.of(context).primaryColor, fontSize: 18)),
           SizedBox(height: 10),
           Text('Do you want to make reviews about order products?',
               textAlign: TextAlign.center,
@@ -302,7 +332,7 @@ class _ReviewDialog extends StatelessWidget {
           SizedBox(height: 10),
           Text('Sending time 12:30 AM 15/9/2021',
               style: getRegularStyle(
-                  color: Theme.of(context).colorScheme.primary, fontSize: 15)),
+                  color: Theme.of(context).primaryColor, fontSize: 15)),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30),
             child: _actions(context),
@@ -340,31 +370,6 @@ class _ReviewDialog extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-///////////////// Delivery stepper/////////
-class _DeliveryStepperItem extends StatelessWidget {
-  _DeliveryStepperItem({Key? key, required this.onConfirmPressed})
-      : super(key: key);
-  final VoidCallback onConfirmPressed;
-  final List<TableRowItem> _deliveryTableRows = [
-    TableRowItem(title: 'Total stores', widget: Text('3')),
-    TableRowItem(title: 'Total weight', widget: Text('12 KG')),
-    TableRowItem(title: 'Delivery commision', widget: Text('1 PSD')),
-    TableRowItem(title: 'Total delivery cost', widget: Text('3 JD')),
-    TableRowItem(title: 'Total price', widget: Text('2 JD')),
-    TableRowItem(
-        title: 'Payment method',
-        widget: buildIcon('asset/images/cash.png', size: 30.r)),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return RecievingTableWidget(
-      onPayInvoicePressed: () {},
-      tableData: _deliveryTableRows,
-      onConfirmPressed: onConfirmPressed,
     );
   }
 }

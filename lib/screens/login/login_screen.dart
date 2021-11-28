@@ -8,8 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen(
+      {Key? key, this.hasRegisterButton = true, required this.logoPath})
+      : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
+  final bool hasRegisterButton;
+  final String logoPath;
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -54,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 50,
             ),
-            _register(context),
+            if (widget.hasRegisterButton) _register(context),
           ],
         ),
       ),
@@ -91,31 +97,12 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Text(
               "طلب مساعدة؟",
               style: TextStyle(
+                color: Theme.of(context).primaryColor,
                 fontSize: 12,
               ),
             ),
             onPressed: () {},
           ),
-          // Row(
-          //   children: [
-          //     Text(
-          //       "تذكرني",
-          //       style: TextStyle(
-          //         fontSize: 12,
-          //       ),
-          //     ),
-          //     Checkbox(
-          //       checkColor: Colors.white,
-          //       fillColor: MaterialStateProperty.resolveWith(getColor),
-          //       value: isChecked,
-          //       onChanged: (bool? value) {
-          //         setState(() {
-          //           isChecked = value ?? false;
-          //         });
-          //       },
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );
@@ -125,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: DefaultButton(
-          background: Color(0xff95989A),
+          // background: Color(0xff95989A),
           text: 'Login',
           onPressed: () {
             ToAndFinish(context, HomeScreen());
@@ -140,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
       return Column(
         children: [
           Image.asset(
-            "asset/images/login_logo.png",
+            widget.logoPath,
             width: MediaQuery.of(context).size.width * 0.3,
             height: MediaQuery.of(context).size.width * 0.3,
           ),

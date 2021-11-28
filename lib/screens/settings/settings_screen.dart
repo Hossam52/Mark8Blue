@@ -185,10 +185,10 @@ class CustomFlutterSwitchState extends State<CustomFlutterSwitch> {
         height: 27,
         value: recieveNotifications,
         toggleSize: 20,
-        inactiveToggleColor: Theme.of(context).colorScheme.primary,
+        inactiveToggleColor: Theme.of(context).primaryColor,
         inactiveColor: Colors.white,
         switchBorder: Border.all(color: Colors.grey.withOpacity(0.4)),
-        activeColor: Theme.of(context).colorScheme.primary,
+        activeColor: Theme.of(context).primaryColor,
         onToggle: (val) {
           setState(() {
             recieveNotifications = val;

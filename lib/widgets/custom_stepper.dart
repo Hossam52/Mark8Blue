@@ -19,7 +19,7 @@ class CustomStepper extends StatefulWidget {
 class _CustomStepperPageState extends State<CustomStepper> {
   Color getColor(int index) {
     if (index == widget.currentStep) {
-      return Theme.of(context).colorScheme.primary; // inProgressColor;
+      return Theme.of(context).primaryColor; // inProgressColor;
     } else if (index < widget.currentStep) {
       return Colors.black;
     } else {
@@ -31,7 +31,7 @@ class _CustomStepperPageState extends State<CustomStepper> {
 
   @override
   Widget build(BuildContext context) {
-    final primaryColor = Theme.of(context).colorScheme.primary;
+    final primaryColor = Theme.of(context).primaryColor;
     return LayoutBuilder(builder: (context, constraints) {
       return Timeline.tileBuilder(
         theme: TimelineThemeData(
@@ -84,7 +84,7 @@ class _CustomStepperPageState extends State<CustomStepper> {
           size: nodeSize,
           child: child,
           color: Colors.white,
-          border: Border.all(color: Theme.of(context).colorScheme.primary),
+          border: Border.all(color: Theme.of(context).primaryColor),
         );
       });
   }

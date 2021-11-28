@@ -53,7 +53,7 @@ class NotificationScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(15.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -19,7 +19,6 @@ class RouteGenerator {
       case Routes.onBordingRoute:
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case Routes.loginhRoute:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.RegisterRoute:
         return MaterialPageRoute(builder: (_) => SignupScreen());
       case Routes.fogetPassword:
