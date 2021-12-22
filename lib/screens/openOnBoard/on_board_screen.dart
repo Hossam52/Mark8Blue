@@ -1,10 +1,8 @@
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/screens/login/login_screen.dart';
-import 'package:clean_app/widgets/indicator_widget.dart';
+import 'package:common_widgets/indicator_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Onboarding extends StatefulWidget {
   @override

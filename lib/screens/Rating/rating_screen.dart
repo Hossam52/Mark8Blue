@@ -1,17 +1,9 @@
-import 'dart:developer';
+import 'package:flutter/material.dart';
 
-import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/Rating/delivery_rating.dart';
 import 'package:clean_app/screens/Rating/rating_stores.dart';
-import 'package:clean_app/widgets/card_widget.dart';
-import 'package:clean_app/widgets/counter_buttons.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
-import 'package:clean_app/widgets/image_rounded.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:common_widgets/custom_toggle_buttons.dart';
 
 class RatingScreen extends StatefulWidget {
   RatingScreen({Key? key}) : super(key: key);

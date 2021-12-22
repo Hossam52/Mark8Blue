@@ -1,4 +1,4 @@
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:flutter/material.dart';

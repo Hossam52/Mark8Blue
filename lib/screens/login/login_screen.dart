@@ -1,11 +1,12 @@
-import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:flutter/material.dart';
+import 'package:clean_app/widgets/colored_text_field.dart';
+import 'package:common_widgets/build_icon.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
+import 'package:clean_app/general_commponent/components.dart';
 import 'package:clean_app/screens/conditions/conditions_screen.dart';
 import 'package:clean_app/screens/home/home_screen.dart';
-import 'package:clean_app/screens/signup/signup_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:common_widgets/default_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen(
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // background: Color(0xff95989A),
           text: 'Login',
           onPressed: () {
-            ToAndFinish(context, HomeScreen());
+            To(context, HomeScreen());
           }
           //fetchApiLogin
           ),
@@ -156,14 +157,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _inputFields() {
     return Column(
       children: [
-        defaultTextForm(
-          name,
-          ' Phone number or nickname',
+        ColoredTextField(
+          controller: name,
+          hint: ' Phone number or nickname',
           type: TextInputType.emailAddress,
-          icon: buildIcon(
-            "asset/images/user.png",
+          icon: BuildIcon(
+            path: "asset/images/user.png",
           ),
-          key: ValueKey("email"),
           validator: (value) {
             if (value!.isEmpty) {
               return 'Please enter a valid email address or phone';
@@ -174,21 +174,19 @@ class _LoginScreenState extends State<LoginScreen> {
         SizedBox(
           height: 16,
         ),
-        defaultTextForm(
-          password,
-          'Password',
+        ColoredTextField(
+          controller: password,
+          hint: 'Password',
           type: TextInputType.text,
-          icon: buildIcon(
-            "asset/images/hide.png",
+          icon: BuildIcon(
+            path: "asset/images/hide.png",
           ),
-          key: ValueKey("email"),
           validator: (value) {
             if (value!.isEmpty) {
               return 'Please enter a valid email address or phone';
             }
             return null;
           },
-          // width: 170,
         )
       ],
     );

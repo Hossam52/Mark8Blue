@@ -1,17 +1,10 @@
 import 'package:clean_app/general_commponent/colors.dart';
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
-import 'package:clean_app/models/company_model.dart';
+import 'package:common_widgets/card_widget.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/models/driver_model.dart';
-import 'package:clean_app/models/morag3at_model.dart';
-import 'package:clean_app/models/review_model.dart';
-import 'package:clean_app/models/vehicle_model.dart';
-import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/profiles/driver_profile/driver_profile_management.dart';
-import 'package:clean_app/widgets/card_widget.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
-import 'package:clean_app/widgets/image_rounded.dart';
 import 'package:clean_app/widgets/store_owner_widget.dart';
 import 'package:flutter/material.dart';
 

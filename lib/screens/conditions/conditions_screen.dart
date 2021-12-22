@@ -1,13 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:clean_app/presentation/resourses/color_manager.dart';
+import 'package:clean_app/screens/signup/signup_screen.dart';
 import 'package:clean_app/constants/const_texts.dart';
 import 'package:clean_app/general_commponent/colors.dart';
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
-import 'package:clean_app/presentation/resourses/color_manager.dart';
-import 'package:clean_app/screens/home/home_screen.dart';
-import 'package:clean_app/screens/signup/signup_screen.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/widgets/background_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ConditionsScreen extends StatefulWidget {
   @override
@@ -103,7 +102,7 @@ class _ConditionsScreenState extends State<ConditionsScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: DefaultButton(
-          background: defaultColor,
+          // background: defaultColor,
           text: 'بدء التسجيل',
           onPressed: () {
             ToAndFinish(context, SignupScreen());

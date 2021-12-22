@@ -38,6 +38,11 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   device_preview: ^0.8.0
 
+  common_widgets:
+    # path: ./packages/common_widgets
+    git: 
+      url: https://github.com/Hossam52/common_widgets.git
+      ref: master
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -4,7 +4,8 @@ import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/Rating/rating_screen.dart';
 import 'package:clean_app/screens/maps/store_owner_location.dart';
 import 'package:clean_app/screens/profiles/store_profiles/store_profile_management.dart';
-import 'package:clean_app/widgets/image_rounded.dart';
+import 'package:common_widgets/image_rounded.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

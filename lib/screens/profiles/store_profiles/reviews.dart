@@ -1,12 +1,11 @@
 import 'package:clean_app/general_commponent/components.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
-import 'package:clean_app/widgets/card_widget.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
-import 'package:clean_app/widgets/rating_bars.dart';
-import 'package:clean_app/widgets/rating_row.dart';
+import 'package:common_widgets/accuracy_good_bad.dart';
+import 'package:common_widgets/card_widget.dart';
+import 'package:common_widgets/rating_bars.dart';
+import 'package:common_widgets/rating_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ReviewsWidget extends StatelessWidget {
@@ -40,7 +39,7 @@ class ReviewsWidget extends StatelessWidget {
           ),
           SizedBox(
               width: (width * 0.45).w,
-              child: ratingRow(bad: 'Bad 30%', good: 'Good 70%')),
+              child: AccuracyGoodBad(goodValue: 30, badValue: 70)),
           SizedBox(
             height: height * 0.25,
             child: ListView(

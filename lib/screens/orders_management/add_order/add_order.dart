@@ -1,14 +1,14 @@
 import 'dart:math';
 
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/border_container_light.dart';
+import 'package:common_widgets/custom_stepper.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/screens/orders_management/add_order/choose_order_prodcuts.dart';
 import 'package:clean_app/screens/orders_management/add_order/choose_stores.dart';
 import 'package:clean_app/screens/orders_management/add_order/order_pricing.dart';
 import 'package:clean_app/screens/orders_management/add_order/success_order.dart';
-import 'package:clean_app/widgets/border_container_light.dart';
-import 'package:clean_app/widgets/card_widget.dart';
-import 'package:clean_app/widgets/custom_stepper.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
+
+import 'package:common_widgets/custom_toggle_buttons.dart';
 import 'package:clean_app/widgets/store_owner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,11 +1,9 @@
-import 'package:clean_app/general_commponent/colors.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
 import 'package:clean_app/screens/orders_management/add_order/add_order.dart';
 import 'package:clean_app/screens/orders_management/prepare_orders/prepare_orders.dart';
 import 'package:clean_app/screens/orders_management/recieve_orders/recieve_orders.dart';
-import 'package:clean_app/widgets/appbar_with_ToggleButtons.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
-import 'package:clean_app/widgets/image_rounded.dart';
+import 'package:common_widgets/appbar_with_toggle_buttons.dart';
+
+import 'package:common_widgets/custom_toggle_buttons.dart';
 import 'package:flutter/material.dart';
 
 class OrdersManagement extends StatefulWidget {

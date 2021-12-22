@@ -1,29 +1,26 @@
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
-import 'package:clean_app/screens/profiles/store_profiles/store_profile.dart';
 import 'package:clean_app/screens/profiles/store_profiles/store_reviews.dart';
-import 'package:clean_app/widgets/cover_and_profile_image.dart';
-import 'package:clean_app/widgets/indicator_widget.dart';
-import 'package:clean_app/widgets/rating_row.dart';
-import 'package:clean_app/widgets/table_data_widget.dart';
+
+import 'package:common_widgets/indicator_widget.dart';
+import 'package:common_widgets/profile.dart';
+import 'package:common_widgets/rating_row.dart';
+import 'package:common_widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class StoreManagement extends StatelessWidget {
   final int initialIndex;
   StoreManagement({Key? key, this.initialIndex = 0}) : super(key: key) {
     storeInformations = [
-      StoreProfileScreen(
+      ProfileStructure(
           profileData: ProfileDataConfigs(
-        coverImagePath: 'asset/images/coverProfile.png',
-        detailsTable: storeInfo,
-        imagePath: 'asset/images/userProfile.png',
-        title: 'Store Details',
-      )),
-      StoreProfileScreen(
+              coverImagePath: 'asset/images/coverProfile.png',
+              detailsTable: storeInfo,
+              imagePath: 'asset/images/userProfile.png',
+              title: 'Store Details',
+              tableValueSizeFactor: 6)),
+      ProfileStructure(
           profileData: ProfileDataConfigs(
         coverImagePath: 'asset/images/coverProfile.png',
         detailsTable: buyerInfo,
@@ -31,7 +28,6 @@ class StoreManagement extends StatelessWidget {
         title: 'Buyer Details',
         showDiscription: false,
       )),
-      // BuyerProfile(),
       StoreReviews(),
     ];
   }
@@ -55,7 +51,6 @@ class StoreManagement extends StatelessWidget {
           'Fast food',
           style: getRegularStyle(fontSize: 16),
         )),
-    TableRowItem(title: 'Rating', widget: RatingRow(size: 25)),
     TableRowItem(title: 'Store address', widget: Text('Address')),
   ];
   final buyerInfo = [

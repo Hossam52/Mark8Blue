@@ -1,7 +1,8 @@
 import 'package:clean_app/general_commponent/components.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/profiles/store_profiles/store_profile_management.dart';
-import 'package:clean_app/widgets/card_widget.dart';
+import 'package:common_widgets/card_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,10 +1,8 @@
-import 'package:clean_app/general_commponent/colors.dart';
-import 'package:clean_app/screens/Rating/rating_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:clean_app/screens/advertisement/advertisement_screen.dart';
 import 'package:clean_app/screens/orders_management/orders_management.dart';
 import 'package:clean_app/screens/profiles/personal/profile_screen.dart';
 import 'package:clean_app/screens/settings/settings_screen.dart';
-import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -1,12 +1,15 @@
-import 'package:clean_app/general_commponent/colors.dart';
-import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:clean_app/presentation/resourses/color_manager.dart';
+import 'package:clean_app/widgets/colored_text_field.dart';
+import 'package:common_widgets/build_icon.dart';
+import 'package:common_widgets/default_text_form_field.dart';
+import 'package:flutter/material.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/home/home_screen.dart';
 import 'package:clean_app/screens/login/login_screen.dart';
+import 'package:clean_app/general_commponent/colors.dart';
+import 'package:clean_app/general_commponent/components.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/widgets/background_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -40,15 +43,11 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
           SizedBox(height: 30),
           _buildNameFields(),
-          SizedBox(height: 16),
           _buildNickName(),
-          SizedBox(height: 16),
           _buildPhone(),
-          SizedBox(height: 16),
           _buiildPassword(),
-          SizedBox(height: 16),
           _buildConfirmPassword(),
-          SizedBox(height: 32),
+          SizedBox(height: 20),
           _buildRegister(context),
           SizedBox(height: 20),
           _buildGoToLogin(context),
@@ -98,40 +97,42 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Widget _buildConfirmPassword() {
-    return defaultTextForm(nameController, "Confirm password",
-        type: TextInputType.text,
-        icon: buildIcon("asset/images/hide.png"), validator: (value) {
-      if (value!.isEmpty) {
-        return 'Please enter a valid email address or phone';
-      }
-      return null;
-    }, width: 10);
-  }
-
-  Widget _buiildPassword() {
-    return defaultTextForm(
-      nameController,
-      "Password",
+    return ColoredTextField(
+      controller: nameController,
+      hint: "Confirm password",
       type: TextInputType.text,
-      icon: buildIcon("asset/images/hide.png"),
+      icon: BuildIcon(path: "asset/images/hide.png"),
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please enter a valid email address or phone';
         }
         return null;
       },
-      width: 180,
-      // width: 170,
+    );
+  }
+
+  Widget _buiildPassword() {
+    return ColoredTextField(
+      controller: nameController,
+      hint: "Password",
+      type: TextInputType.text,
+      icon: BuildIcon(path: "asset/images/hide.png"),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please enter a valid email address or phone';
+        }
+        return null;
+      },
     );
   }
 
   Widget _buildPhone() {
-    return defaultTextForm(
-      nameController,
-      "Phone number",
+    return ColoredTextField(
+      controller: nameController,
+      hint: "Phone number",
       type: TextInputType.number,
-      icon: buildIcon(
-        "asset/images/phone_icon.png",
+      icon: BuildIcon(
+        path: "asset/images/phone_icon.png",
       ),
       validator: (value) {
         if (value!.isEmpty) {
@@ -139,25 +140,21 @@ class _SignupScreenState extends State<SignupScreen> {
         }
         return null;
       },
-      width: 180,
-      // width: 170,
     );
   }
 
   Widget _buildNickName() {
-    return defaultTextForm(
-      nameController,
-      "NickName",
+    return ColoredTextField(
+      controller: nameController,
+      hint: "NickName",
       type: TextInputType.text,
-      icon: buildIcon("asset/images/user.png"),
+      icon: BuildIcon(path: "asset/images/user.png"),
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please enter a valid email address or phone';
         }
         return null;
       },
-      width: 180,
-      // width: 170,
     );
   }
 
@@ -165,9 +162,9 @@ class _SignupScreenState extends State<SignupScreen> {
     return Row(
       children: [
         Expanded(
-          child: defaultTextForm(
-            nameController,
-            "First name",
+          child: ColoredTextField(
+            controller: nameController,
+            hint: "First name",
             type: TextInputType.text,
             validator: (value) {
               if (value!.isEmpty) {
@@ -175,23 +172,19 @@ class _SignupScreenState extends State<SignupScreen> {
               }
               return null;
             },
-            width: 40,
           ),
         ),
         Expanded(
-          child: defaultTextForm(
-            nameController,
-            "Last name",
+          child: ColoredTextField(
+            controller: nameController,
+            hint: "Last name",
             type: TextInputType.text,
-
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter a valid email address or phone';
               }
               return null;
             },
-            width: 30,
-            // width: 170,
           ),
         ),
       ],

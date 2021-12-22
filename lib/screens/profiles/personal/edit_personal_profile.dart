@@ -1,11 +1,15 @@
+import 'package:clean_app/widgets/colored_text_field.dart';
+import 'package:flutter/material.dart';
+import 'package:clean_app/widgets/build_row.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/maps/address_location.dart';
-import 'package:clean_app/widgets/cover_and_profile_image.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:common_widgets/default_button.dart';
+import 'package:common_widgets/default_text_form_field.dart';
+import 'package:common_widgets/build_icon.dart';
+import 'package:common_widgets/cover_and_profile_image.dart';
+import 'package:common_widgets/custom_toggle_buttons.dart';
 
 class EditPersonalProfile extends StatelessWidget {
   const EditPersonalProfile({Key? key}) : super(key: key);
@@ -17,7 +21,7 @@ class EditPersonalProfile extends StatelessWidget {
         centerTitle: true,
         title: Text(
           'Edit profile',
-          style: getRegularStyle(fontSize: 22, color: Colors.white),
+          style: getRegularStyle(fontSize: 18, color: Colors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -66,26 +70,33 @@ class EditPersonalProfile extends StatelessWidget {
       child: Column(
         children: [
           _changeName(),
-          buildRow(
+          BuildRow(
               title: 'Age',
-              value: defaultTextForm(TextEditingController(), '30')),
-          buildRow(
+              value: ColoredTextField(
+                  controller: TextEditingController(), hint: '30')),
+          BuildRow(
               title: 'Change phone',
-              value: defaultTextForm(TextEditingController(), '0780997333')),
-          buildRow(title: 'Gender', value: _genderSelection()),
-          buildRow(
+              value: ColoredTextField(
+                  controller: TextEditingController(), hint: '0780997333')),
+          BuildRow(title: 'Gender', value: _genderSelection()),
+          BuildRow(
               title: 'Current password',
-              value: defaultTextForm(TextEditingController(), '**********',
+              value: ColoredTextField(
+                  controller: TextEditingController(),
+                  hint: '**********',
                   isPassword: true)),
-          buildRow(
+          BuildRow(
               title: 'Change password',
-              value: defaultTextForm(TextEditingController(), '**********',
+              value: ColoredTextField(
+                  controller: TextEditingController(),
+                  hint: '**********',
                   isPassword: true)),
-          buildRow(
+          BuildRow(
               title: 'Nationality',
-              value: defaultTextForm(TextEditingController(), 'Jordan')),
+              value: ColoredTextField(
+                  controller: TextEditingController(), hint: 'Jordan')),
           _changeAddress(),
-          buildRow(
+          BuildRow(
               title: 'Locate home address over map',
               value: _locateAddress(),
               titleSpace: 3),
@@ -105,7 +116,7 @@ class EditPersonalProfile extends StatelessWidget {
               onTap: () {
                 To(context, AddressLocation());
               },
-              child: buildIcon('asset/images/map.png', size: 30.w),
+              child: BuildIcon(path: 'asset/images/map.png', size: 30.w),
             ),
           )
         ],
@@ -122,7 +133,9 @@ class EditPersonalProfile extends StatelessWidget {
           style: getRegularStyle(fontSize: 20),
         ),
         SizedBox(height: 10),
-        defaultTextForm(TextEditingController(), 'Type your address location',
+        ColoredTextField(
+            controller: TextEditingController(),
+            hint: 'Type your address location',
             maxLines: 4),
         SizedBox(height: 10),
         Divider(),
@@ -157,9 +170,11 @@ class EditPersonalProfile extends StatelessWidget {
         Row(
           children: [
             Expanded(
-                child: defaultTextForm(TextEditingController(), 'Mohamed')),
+                child: ColoredTextField(
+                    controller: TextEditingController(), hint: 'Mohamed')),
             Expanded(
-              child: defaultTextForm(TextEditingController(), 'Ahmed'),
+              child: ColoredTextField(
+                  controller: TextEditingController(), hint: 'Ahmed'),
             ),
           ],
         ),

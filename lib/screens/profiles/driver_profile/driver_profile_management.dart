@@ -1,16 +1,12 @@
-import 'package:clean_app/general_commponent/default_button.dart';
 import 'package:clean_app/models/company_model.dart';
 import 'package:clean_app/models/driver_model.dart';
 import 'package:clean_app/models/vehicle_model.dart';
 import 'package:clean_app/screens/profiles/driver_profile/driver_reviews_management.dart';
-import 'package:clean_app/screens/profiles/store_profiles/store_profile.dart';
-import 'package:clean_app/widgets/indicator_widget.dart';
-import 'package:clean_app/widgets/rating_row.dart';
-import 'package:clean_app/widgets/table_data_widget.dart';
+import 'package:common_widgets/indicator_widget.dart';
+import 'package:common_widgets/profile.dart';
+import 'package:common_widgets/rating_row.dart';
+import 'package:common_widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class DriverProfileManagement extends StatelessWidget {
   DriverProfileManagement(this.configs, {Key? key})
@@ -19,22 +15,22 @@ class DriverProfileManagement extends StatelessWidget {
         vehicleInfo = configs.driverModel.vehicle,
         super(key: key) {
     storeInformations = [
-      StoreProfileScreen(
+      ProfileStructure(
         profileData: ProfileDataConfigs(
-          imagePath: driverInfo.imagePath,
-          coverImagePath: driverInfo.coverImagePath,
-          detailsTable: getDriverInformation,
-          title: 'Driver Details',
-        ),
+            imagePath: driverInfo.imagePath,
+            coverImagePath: driverInfo.coverImagePath,
+            detailsTable: getDriverInformation,
+            title: 'Driver Details',
+            showDiscription: false),
       ),
-      StoreProfileScreen(
+      ProfileStructure(
           profileData: ProfileDataConfigs(
         imagePath: companyInfo.imagePath,
         coverImagePath: companyInfo.coverImagePath,
         detailsTable: getCompnayInformation,
         title: 'Company Details',
       )),
-      StoreProfileScreen(
+      ProfileStructure(
           profileData: ProfileDataConfigs(
         imagePath: vehicleInfo.imagePath,
         coverImagePath: vehicleInfo.coverImagePath,
@@ -66,9 +62,6 @@ class DriverProfileManagement extends StatelessWidget {
           title: 'Experience', widget: Text('${driverInfo.experience}')),
       TableRowItem(
           title: 'Nationality', widget: Text('${driverInfo.nationality}')),
-      TableRowItem(title: 'Points', widget: Text('${driverInfo.points}')),
-      TableRowItem(
-          title: 'Best buyer', widget: Text('${driverInfo.bestBuyer}')),
     ];
   }
 
@@ -80,12 +73,6 @@ class DriverProfileManagement extends StatelessWidget {
       TableRowItem(
           title: 'Number vehicles',
           widget: Text('${companyInfo.vehiclesCount}')),
-      TableRowItem(
-        title: 'Rating',
-        widget: RatingRow(
-          rating: companyInfo.rating,
-        ),
-      ),
     ];
   }
 

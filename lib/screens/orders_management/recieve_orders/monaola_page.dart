@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:clean_app/general_commponent/colors.dart';
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
-import 'package:clean_app/presentation/resourses/color_manager.dart';
+import 'package:common_widgets/card_widget.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/orders_management/recieve_orders/delivery_page.dart';
-import 'package:clean_app/widgets/card_widget.dart';
-import 'package:clean_app/widgets/signature.dart';
+
 import 'package:clean_app/widgets/store_owner_widget.dart';
-import 'package:clean_app/widgets/table_data_widget.dart';
+import 'package:common_widgets/recieving_table.dart';
+import 'package:common_widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,7 +52,10 @@ class MonaloaPage extends StatelessWidget {
           _confirmArrival(),
           Divider(),
           RecievingTableWidget(
-              tableData: _recievingOrderRowsData, onPayInvoicePressed: () {})
+              time: '12:30 AM 15/9/2021',
+              onConfirmPressed: () {},
+              tableData: _recievingOrderRowsData,
+              onPayInvoicePressed: () {})
         ],
       ),
     );

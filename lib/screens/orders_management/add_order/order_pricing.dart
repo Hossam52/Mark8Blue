@@ -1,11 +1,11 @@
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/maps/delivery_location_map.dart';
 import 'package:clean_app/screens/orders_management/add_order/success_order.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
-import 'package:clean_app/widgets/table_data_widget.dart';
+import 'package:common_widgets/custom_toggle_buttons.dart';
+import 'package:common_widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

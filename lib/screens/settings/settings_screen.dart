@@ -1,12 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/profiles/personal/edit_personal_profile.dart';
-import 'package:clean_app/widgets/cancel_Item.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_switch/flutter_switch.dart';
+import 'package:common_widgets/cancel_Item.dart';
 
 class SettinsgScreen extends StatefulWidget {
   const SettinsgScreen({Key? key}) : super(key: key);

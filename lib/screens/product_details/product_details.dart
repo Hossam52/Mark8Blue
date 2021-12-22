@@ -1,10 +1,8 @@
-import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/counter_buttons.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
-import 'package:clean_app/widgets/counter_buttons.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
+import 'package:common_widgets/custom_toggle_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({Key? key}) : super(key: key);

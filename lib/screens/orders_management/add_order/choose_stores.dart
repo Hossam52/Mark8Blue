@@ -1,14 +1,14 @@
 import 'dart:math';
 
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
+import 'package:common_widgets/border_container_light.dart';
+import 'package:common_widgets/card_widget.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/presentation/resourses/values.dart';
 import 'package:clean_app/screens/maps/store_map_locations.dart';
-import 'package:clean_app/widgets/border_container_light.dart';
-import 'package:clean_app/widgets/card_widget.dart';
 import 'package:clean_app/widgets/choosen_stores.dart';
-import 'package:clean_app/widgets/custom_toggle_buttons.dart';
+import 'package:common_widgets/custom_toggle_buttons.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

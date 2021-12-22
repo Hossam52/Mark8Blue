@@ -1,12 +1,10 @@
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/models/driver_model.dart';
 import 'package:clean_app/models/review_model.dart';
 import 'package:clean_app/presentation/resourses/color_manager.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
-import 'package:clean_app/widgets/rating_bars.dart';
-import 'package:clean_app/widgets/rating_row.dart';
+import 'package:common_widgets/rating_bars.dart';
+import 'package:common_widgets/rating_row.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DriverReviews extends StatelessWidget {
   DriverReviews({Key? key, required this.driverReviewModel})
@@ -43,17 +41,11 @@ class DriverReviews extends StatelessWidget {
                   getRegularStyle(fontSize: 18, color: ColorManager.lightGrey)),
           SizedBox(height: 20),
           ratingRow(
-              title: '${_speedBehavior.title}',
-              good: '${_speedBehavior.fast}% fast',
-              bad: '${_speedBehavior.slow}% slow'),
-          ratingRow(
-              title: '${_communicationBehavior.title}',
-              good: '${_communicationBehavior.fast}% good',
-              bad: '${_communicationBehavior.slow}% Bad'),
-          ratingRow(
-              title: '${_commitmentBehavior.title}',
-              good: '${_commitmentBehavior.fast}% No commitment',
-              bad: '${_commitmentBehavior.slow}% commitment'),
+              _speedBehavior.title, _speedBehavior.fast, _speedBehavior.slow),
+          ratingRow(_communicationBehavior.title, _communicationBehavior.fast,
+              _communicationBehavior.slow),
+          ratingRow(_commitmentBehavior.title, _commitmentBehavior.fast,
+              _commitmentBehavior.slow),
           _statistics()
         ],
       ),

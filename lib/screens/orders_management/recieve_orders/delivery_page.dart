@@ -2,16 +2,17 @@ import 'dart:math';
 
 import 'package:clean_app/general_commponent/colors.dart';
 import 'package:clean_app/general_commponent/components.dart';
-import 'package:clean_app/general_commponent/default_button.dart';
-import 'package:clean_app/presentation/resourses/color_manager.dart';
+import 'package:common_widgets/border_container_light.dart';
+import 'package:common_widgets/build_icon.dart';
+import 'package:common_widgets/components.dart';
+import 'package:common_widgets/confirm_arrival.dart';
+import 'package:common_widgets/custom_stepper.dart';
+import 'package:common_widgets/default_button.dart';
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
 import 'package:clean_app/screens/Rating/rating_screen.dart';
-import 'package:clean_app/screens/profiles/store_profiles/reviews.dart';
-import 'package:clean_app/widgets/border_container_light.dart';
-import 'package:clean_app/widgets/custom_stepper.dart';
-import 'package:clean_app/widgets/signature.dart';
 import 'package:clean_app/widgets/store_owner_widget.dart';
-import 'package:clean_app/widgets/table_data_widget.dart';
+import 'package:common_widgets/recieving_table.dart';
+import 'package:common_widgets/table_data_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,7 +54,9 @@ class _DeliveryPageState extends State<DeliveryPage> {
           Divider(),
           StoreOwnerWidget(),
           SizedBox(height: 10),
-          ConfimrArrival(),
+          ConfimrArrival(
+            arrivalTime: '12:30 AM 15/9/2021',
+          ),
           Divider(),
           _pricintDetails(height),
           princingSteppers[selectedPricingStepper].page,
@@ -166,105 +169,15 @@ class _RemainForRecievingItem extends StatelessWidget {
   }
 }
 
-class ConfimrArrival extends StatelessWidget {
-  const ConfimrArrival({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 6,
-          child: DefaultButton(
-            background: Theme.of(context).primaryColor,
-            onPressed: () {},
-            text: 'Confirm Arrival',
-            horizontalMargin: 0,
-          ),
-        ),
-        Expanded(child: Container()),
-        Flexible(
-          flex: 9,
-          child: Text('Meeting time 12:30 AM 15/9/2021',
-              style: getLightStyle(
-                fontSize: 15,
-                color: Theme.of(context).primaryColor,
-              )),
-        )
-      ],
-    );
-  }
-}
-
-//////////////////Concrete class for template/////////////////
-class RecievingTableWidget extends StatelessWidget {
-  const RecievingTableWidget(
-      {Key? key,
-      required this.tableData,
-      this.onConfirmPressed,
-      required this.onPayInvoicePressed})
-      : super(key: key);
-  final List<TableRowItem> tableData;
-  final VoidCallback? onConfirmPressed;
-  final VoidCallback onPayInvoicePressed;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TableDataWidget(rows: tableData),
-        _payInvoice(),
-        SizedBox(height: 8),
-        SignatureWidget(
-          onConfirmPressed: onConfirmPressed,
-        )
-      ],
-    );
-  }
-
-  Widget _payInvoice() {
-    return Builder(builder: (context) {
-      return Row(
-        children: [
-          Expanded(
-            flex: 6,
-            child: DefaultButton(
-              background: Theme.of(context).primaryColor,
-              onPressed: onPayInvoicePressed,
-              text: 'Pay invoice',
-              horizontalMargin: 0,
-            ),
-          ),
-          Expanded(child: Container()),
-          Flexible(
-            flex: 9,
-            child: Text('12:30 AM 15/9/2021',
-                style: getLightStyle(
-                  fontSize: 15,
-                  color: Theme.of(context).primaryColor,
-                )),
-          )
-        ],
-      );
-    });
-  }
-}
-
 ///////////////// Purchasing stepper/////
 class _PurchaseStepperItem extends StatelessWidget {
   _PurchaseStepperItem({Key? key}) : super(key: key);
-
-  final List<TableRowItem> _purchaseTableRows = [
-    TableRowItem(title: 'Order number', widget: Text('#5544123699')),
-    TableRowItem(title: 'Discount', widget: Text('5')),
-    TableRowItem(title: 'Order commision', widget: Text('1 JD')),
-    TableRowItem(title: 'Total order price', widget: Text('94 JD')),
-    TableRowItem(
-        title: 'Payment method',
-        widget: buildIcon('asset/images/cash.png', size: 30.r)),
-  ];
+  final List<TableRowItem> _purchaseTableRows =
+      invoiceData(id: '5544123699', discount: 5, commission: 1, totalPrice: 94);
   @override
   Widget build(BuildContext context) {
     return RecievingTableWidget(
+        time: '12:30 AM 15/9/2021',
         tableData: _purchaseTableRows,
         onPayInvoicePressed: () {},
         onConfirmPressed: () => _confirmPurchase(context));
@@ -293,11 +206,12 @@ class _DeliveryStepperItem extends StatelessWidget {
     TableRowItem(title: 'Total price', widget: Text('2 JD')),
     TableRowItem(
         title: 'Payment method',
-        widget: buildIcon('asset/images/cash.png', size: 30.r)),
+        widget: BuildIcon(path: 'asset/images/cash.png', size: 30.r)),
   ];
   @override
   Widget build(BuildContext context) {
     return RecievingTableWidget(
+      time: '12:30 AM 15/9/2021',
       onPayInvoicePressed: () {},
       tableData: _deliveryTableRows,
       onConfirmPressed: onConfirmPressed,
@@ -364,7 +278,8 @@ class _ReviewDialog extends StatelessWidget {
             },
             text: 'Ignore',
             horizontalMargin: 0,
-            textColor: Colors.black,
+            // textColor: Colors.white,
+            background: Colors.white,
             isBorder: true,
             radius: 5,
           ),

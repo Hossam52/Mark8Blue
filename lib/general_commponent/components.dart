@@ -1,4 +1,5 @@
 import 'package:clean_app/presentation/resourses/styles_manager.dart';
+import 'package:common_widgets/accuracy_good_bad.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -107,90 +108,19 @@ Widget defaultTextForm(
   );
 }
 
-Widget buildRow(
-        {required String title,
-        required Widget value,
-        int titleSpace = 1,
-        int valueSpace = 2}) =>
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: titleSpace,
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            Expanded(
-              flex: valueSpace,
-              child: Row(
-                children: [
-                  Expanded(child: Center(child: value)),
-                ],
-              ),
-            ),
-          ],
-        ),
-        Divider(),
-        SizedBox(
-          height: 10,
-        )
-      ],
-    );
-
-Widget ratingRow({String? title, required String bad, required String good}) =>
-    Column(
+Widget ratingRow(String title, double val1, double val2) => Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (title != null)
-                Expanded(child: Text(title, style: getRegularStyle())),
+              Expanded(child: Text(title, style: getRegularStyle())),
               Expanded(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  // height: 38.h,
-                  // width: 180.w,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    //color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          bad,
-                          style: getBoldStyle(
-                            fontSize: 14,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ),
-                      VerticalDivider(),
-                      Expanded(
-                        child: Text(
-                          good,
-                          style: getBoldStyle(
-                            fontSize: 14,
-                            color: Colors.green,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+                  child: AccuracyGoodBad(
+                goodValue: val1,
+                badValue: val2,
+              )),
             ],
           ),
         ),
